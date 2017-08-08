@@ -139,7 +139,7 @@ brew "imagemagick"
 # Testing
 brew "qt@5.5"
 
-# Programming language prereqs and package managers
+# Programming language prerequisites and package managers
 brew "libyaml" # should come after openssl
 brew "coreutils"
 brew "yarn"
