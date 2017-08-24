@@ -119,6 +119,9 @@ tap "universal-ctags/universal-ctags"
 brew "universal-ctags", args: ["HEAD"]
 brew "git"
 brew "openssl"
+brew "pcre"
+brew "jq"
+brew "htop"
 brew "rcm"
 brew "reattach-to-user-namespace"
 brew "the_silver_searcher"
@@ -127,15 +130,36 @@ brew "vim"
 brew "watchman"
 brew "zsh"
 
-# Heroku
-brew "heroku"
-brew "parity"
+# perl
+brew "perl"
+
+# lua
+brew "lua@5.1"
 
 # GitHub
-brew "hub"
+#brew "hub"
+
+# networking
+brew "curl"
+brew "tcpdump"
+brew "lsof"
+brew "wrk"
+
+# clang
+brew "clang-format"
+brew "llvm"
+brew "cmake"
+brew "ninja"
+
+# python
+brew "mkdocs"
+
+# openresty
+brew "homebrew/nginx/openresty"
 
 # Image manipulation
 brew "imagemagick"
+brew "graphviz"
 
 # Testing
 brew "qt@5.5" if MacOS::Xcode.installed?
@@ -157,10 +181,6 @@ if brew list | grep --silent "qt@5.5"; then
   brew unlink qt@5.5
   brew link --force qt@5.5
 fi
-
-fancy_echo "Update heroku binary..."
-brew unlink heroku
-brew link --force heroku
 
 fancy_echo "Configuring Ruby ..."
 find_latest_ruby() {
@@ -188,3 +208,9 @@ if [ -f "$HOME/.laptop.local" ]; then
   # shellcheck disable=SC1090
   . "$HOME/.laptop.local"
 fi
+
+# git-hub
+git clone https://github.com/ingydotnet/git-hub ~/git-hub --depth=1
+append_to_zshrc 'source ~/git-hub/.rc'
+source $zshrc
+
